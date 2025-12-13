@@ -1,23 +1,296 @@
-<!DOCTYPE html>
-<html lang="en">
-  <head>
-    <title>Home</title>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width" />
-    <!--
-      Need a visual blank slate?
-      Remove all code in `styles.css`!
-    -->
-    <link rel="stylesheet" href="styles.css" />
-    <script type="module" src="script.js"></script>
-  </head>
-  <body>
-    <nav>
-      <a href="/" aria-current="page">Home</a>
-      <a href="/page2.html">Other page</a>
-    </nav>
-    <main>
-      <h1>Home page</h1>
-    </main>
-  </body>
+
+    <style>
+        /* 기본 레이아웃 및 폰트 */
+        body { font-family: 'Malgun Gothic', 'Noto Sans KR', sans-serif; line-height: 1.7; margin: 0; padding: 0; color: #343a40; background-color: #f8f9fa; }
+        header, section, footer { padding: 30px 20px; max-width: 1000px; margin: auto; background-color: #ffffff; border-radius: 12px; margin-bottom: 25px; box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05); }
+
+        /* 색상 및 타이포그래피 */
+        h1, h2, h3 { color: #007bff; font-weight: 700; }
+        h1 { font-size: 2.5em; text-align: center; margin-bottom: 0.5em; color: #212529; }
+        h2 { font-size: 2em; border-bottom: 3px solid #007bff; padding-bottom: 10px; margin-top: 40px; }
+        h3 { font-size: 1.5em; color: #343a40; margin-top: 25px; }
+
+        /* CTA 버튼 (강조) */
+        .cta-btn {
+            display: block;
+            width: fit-content;
+            margin: 25px auto 35px auto;
+            padding: 18px 35px;
+            background-color: #28a745;
+            color: #fff;
+            font-size: 20px;
+            border-radius: 8px;
+            text-decoration: none;
+            font-weight: 700;
+            letter-spacing: 1px;
+            transition: background-color 0.3s ease, transform 0.2s ease;
+            box-shadow: 0 4px 6px rgba(40, 167, 69, 0.4);
+        }
+        .cta-btn:hover { background-color: #218838; transform: translateY(-2px); }
+
+        /* 리스트 및 인용구 */
+        ul, ol { padding-left: 25px; margin-bottom: 20px; }
+        li { margin-bottom: 10px; }
+        blockquote { font-style: italic; border-left: 5px solid #ffc107; margin: 25px 0; padding: 15px 20px; background-color: #fff9e6; color: #6c757d; border-radius: 5px; }
+
+        /* 폼 스타일 (체류시간 증대) */
+        .contact-form { background-color: #e9ecef; padding: 30px; border-radius: 10px; }
+        .contact-form label { display: block; margin-bottom: 8px; font-weight: 600; color: #495057; }
+        .contact-form input[type="text"],
+        .contact-form input[type="tel"],
+        .contact-form input[type="email"],
+        .contact-form select,
+        .contact-form textarea {
+            width: 100%;
+            padding: 12px;
+            margin-bottom: 15px;
+            border: 1px solid #ced4da;
+            border-radius: 5px;
+            box-sizing: border-box;
+            font-size: 16px;
+        }
+        .contact-form button {
+            background-color: #007bff;
+            color: white;
+            padding: 15px 20px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            font-size: 18px;
+            font-weight: 600;
+            transition: background-color 0.3s;
+        }
+        .contact-form button:hover { background-color: #0056b3; }
+
+        /* 표 스타일 */
+        table { width: 100%; border-collapse: collapse; margin: 25px 0; font-size: 15px; text-align: left; }
+        th, td { padding: 12px 15px; border: 1px solid #dee2e6; }
+        thead tr { background-color: #007bff; color: #ffffff; text-align: center; }
+        tbody tr:nth-child(even) { background-color: #f8f9fa; }
+
+        /* 외부 링크 (신뢰성) */
+        .external-links a { display: inline-block; margin-right: 15px; color: #17a2b8; text-decoration: underline; font-weight: 500; }
+        .external-links { margin-top: 30px; padding-top: 20px; border-top: 1px dashed #ced4da; }
+
+        /* 푸터 */
+        footer { text-align: center; padding: 25px 20px; font-size: 14px; background-color: #343a40; color: #adb5bd; margin-bottom: 0; border-radius: 0; box-shadow: none; }
+    </style>
+
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "MovingCompany",
+      "name": "해운대이삿짐센터",
+      "url": "https://example.com/haeundae-moving",
+      "logo": "https://example.com/logo.png",
+      "description": "부산 해운대구 전문 포장이사, 보관이사, 원룸이사 서비스. 2026년 최신 시스템 적용.",
+      "telephone": "010-1234-5678",
+      "address": {
+        "@type": "PostalAddress",
+        "addressLocality": "부산광역시",
+        "addressRegion": "해운대구",
+        "postalCode": "48100",
+        "streetAddress": "해운대구 달맞이길 123"
+      },
+      "areaServed": ["해운대구", "센텀시티", "마린시티", "좌동", "우동", "중동", "반여동", "재송동", "송정동"],
+      "serviceType": ["포장이사", "보관이사", "원룸이사", "사무실이사", "용달이사"]
+    }
+    </script>
+</head>
+<body>
+
+    <header>
+        <h1>해운대이삿짐 전문 | 부산 해운대 포장이사 · 보관이사 · 원룸이사</h1>
+        <p>2026년, 해운대 전 지역을 아우르는 **최고의 이사 서비스**를 경험하세요. 안전, 친절, 합리적인 비용으로 고객님의 새 출발을 지원합니다.</p>
+        <a href="#estimate-form" class="cta-btn">📞 지금 바로 무료 견적 상담 신청하기</a>
+    </header>
+
+    <section id="introduction">
+        <h2>해운대이삿짐, 왜 저희를 선택해야 할까요?</h2>
+        <p>부산의 랜드마크인 해운대는 마린시티, 센텀시티와 같은 초고층 아파트 단지부터 좌동, 우동, 중동의 주거 밀집 지역까지 다양한 이사 환경을 가지고 있습니다. 저희 해운대이삿짐센터는 이러한 **해운대구의 지리적 특성과 건축 환경**을 완벽히 이해하고, 각 상황에 최적화된 맞춤형 이사 솔루션을 2026년 기준 최신 장비와 시스템으로 제공합니다.</p>
+        <p>특히 **고가 가구 및 전자제품의 안전한 운송**에 중점을 두고 있으며, 전담 팀장이 처음부터 끝까지 책임지고 이사를 진행하여 이사 당일 발생할 수 있는 모든 변수에 능동적으로 대처합니다. 해운대 해변가 인근의 변동성이 큰 날씨에도 짐 보관에 필요한 최적의 환경을 제공하는 **보관이사 전문 창고**를 운영하고 있습니다.</p>
+    </section>
+
+    <section id="services">
+        <h2>✅ 해운대 포장이사 서비스 종류 및 특징</h2>
+        <p>고객님의 상황과 짐의 규모에 맞춰 가장 효율적인 이사 방식을 제안합니다.</p>
+        <hr>
+        
+        <section id="포장이사">
+            <h3>프리미엄 포장이사</h3>
+            <p>포장부터 운송, 배치, 정리, 청소까지 모든 과정을 전문가가 진행합니다. 고객님은 새 집에서 바로 일상생활을 시작할 수 있습니다. 특히 **센텀시티**와 **마린시티**의 고급 주택이나 아파트 이사 시, 맞춤형 포장재와 에어캡, 특수 박스를 사용하여 물품 파손을 0%에 가깝게 방지합니다.</p>
+        </section>
+
+        <section id="보관이사">
+            <h3>안심 보관이사 (일정 조율 문제 해결)</h3>
+            <p>새 집 입주일이 맞지 않거나, 인테리어 공사 등으로 인해 임시 보관이 필요할 경우 최적의 서비스입니다. 해운대 인근의 **온도 및 습도 조절 시설**을 갖춘 전문 보관 창고에서 고객님의 소중한 짐을 안전하게 관리합니다. 보관 기간, 짐의 양에 따라 합리적인 **이사 비용**을 산정해드립니다.</p>
+        </section>
+
+        <section id="원룸이사">
+            <h3>해운대 원룸이사 및 용달이사</h3>
+            <p>1인 가구, 학생, 신혼부부 등을 위한 실속형 서비스입니다. 짐의 양에 따라 **반포장이사** 또는 **일반이사** 옵션을 선택할 수 있습니다. **좌동**이나 **우동**처럼 오피스텔이나 빌라가 많은 지역에 특화되어 있으며, 이사 비용 부담을 최소화하면서도 신속하고 깔끔한 운송을 보장합니다.</p>
+        </section>
+
+        <section id="사무실이사">
+            <h3>해운대 사무실이사 (기업 이전 전문)</h3>
+            <p>기업의 서류, 서버, 민감한 사무기기를 체계적으로 분류하고 안전하게 이전합니다. **반여동, 재송동** 산업단지나 **센텀시티**의 IT/미디어 기업 이전에 풍부한 경험을 보유하고 있으며, 업무 중단을 최소화하기 위해 주말 또는 야간 이사도 협의 가능합니다.</p>
+    </section>
+
+    <section id="process">
+        <h2>이사 진행 절차: 해운대이삿짐의 4단계 책임 시스템</h2>
+        <ol>
+            <li><strong>1단계: 전문 상담 및 무료 방문 견적:</strong> 고객님의 이사 환경(출발지/도착지 층수, 짐의 양, 특수 물품 유무, 사다리차 필요 여부)을 정확히 파악하여 합리적인 이사 비용을 산출합니다.</li>
+            <li><strong>2단계: 계약 및 맞춤형 스케줄링:</strong> 견적에 따른 계약서를 작성하고, 고객님의 일정에 맞춰 2026년 최적화된 이사 일정을 확정합니다.</li>
+            <li><strong>3단계: 이사 당일 책임 작업:</strong> 전담 팀장의 지휘 아래 전문 포장, 안전 운송, 도착지 정리 정돈 및 청소 서비스를 제공합니다.</li>
+            <li><strong>4단계: 최종 점검 및 마무리:</strong> 고객님의 만족도 확인 후, 최종적으로 서비스에 대한 피드백을 수렴하고 마무리합니다.</li>
+        </ol>
+        
+    </section>
+
+    <section id="keywords-and-area">
+        <h2>📈 해운대이삿짐 상위 노출을 위한 키워드 분석</h2>
+        <p>네이버 검색 상위 노출 및 사용자 유입을 극대화하기 위해 해운대 지역과 관련된 광범위한 키워드를 분석하고, 이를 서비스 설명에 자연스럽게 녹여내고 있습니다. 아래 표는 고객님들이 '해운대이삿짐'과 함께 많이 검색하는 주요 키워드들을 정리한 것입니다.</p>
+
+        <table>
+            <thead>
+                <tr>
+                    <th>분류</th>
+                    <th>주요 키워드 예시 (총 83개 이상 노출)</th>
+                    <th>키워드 관련 설명 및 서비스 연관성</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>**메인 키워드**</td>
+                    <td>해운대이삿짐, 해운대 포장이사, 부산 해운대 이사</td>
+                    <td>검색량이 가장 높은 핵심 키워드. 제목과 주요 내용에 반복 배치.</td>
+                </tr>
+                <tr>
+                    <td>**자동완성/연관**</td>
+                    <td>해운대 이사 비용, 해운대 이사 추천, 해운대 원룸 포장이사, 해운대 용달이사</td>
+                    <td>실제 고객이 비용 및 서비스 선택 시 사용하는 구체적인 검색어. 가격 경쟁력과 전문성을 강조.</td>
+                </tr>
+                <tr>
+                    <td>**지역명 키워드**</td>
+                    <td>마린시티 이삿짐, 센텀시티 이사, 좌동 포장이사, 우동 이삿짐, 중동 이사, 재송동 보관이사, 반여동 이사 업체, 송정 이사, 기장 정관 이사</td>
+                    <td>해운대구 내의 세부 지역명(아파트 단지명 포함)을 사용하여 지역 전문성을 어필하고 검색 영역을 확장.</td>
+                </tr>
+                <tr>
+                    <td>**함께 많이 찾는**</td>
+                    <td>해운대 이사 잘하는 곳, 이사 견적 비교, 부산 포장이사 잘하는 곳, 사다리차 이용료</td>
+                    <td>사용자의 잠재적 니즈를 파악하여 '견적', '비용', '잘하는 곳' 등의 정보를 상세히 제공.</td>
+                </tr>
+            </tbody>
+        </table>
+
+        <h3>해운대구 주요 지역 이사 전문 서비스 지역</h3>
+        <p>저희 해운대이삿짐센터는 다음 지역을 포함하여 해운대구 전역에서 서비스를 제공합니다:</p>
+        <ul>
+            <li>**해운대 신시가지:** 좌동, 중동, 우동 지역의 대단지 아파트 및 주거 시설 이사.</li>
+            <li>**해운대 신도시 지역:** 센텀시티, 마린시티의 고급 주상복합 및 오피스텔 이사 전문.</li>
+            <li>**기타 생활권:** 반여동, 재송동, 송정동, 그리고 인근의 기장군 지역 이사까지 폭넓은 서비스 커버리지.</li>
+            <li>**주요 아파트 단지:** 해운대두산위브더제니스, 해운대아이파크, 센텀파크, 트럼프월드마린 등 초고층 이사 경험 다수.</li>
+        </ul>
+    </section>
+
+    <section id="trust-and-reliability">
+        <h2>🔒 신뢰성과 안전: 2026년 이사 준비 가이드</h2>
+        <p>성공적인 이사를 위해서는 신뢰할 수 있는 업체를 선정하는 것이 가장 중요합니다. 저희는 이사화물 배상책임보험 가입은 물론, 고객 만족을 최우선으로 하는 투명한 운영을 약속드립니다.</p>
+
+        <h3>2026년 이사 트렌드 및 유의사항</h3>
+        <p>2026년에는 이사 예약이 더욱 집중되는 경향이 있으므로, 이사 성수기(손 없는 날 포함)에는 최소 2~3개월 전부터 해운대 포장이사 견적을 받아보는 것이 유리합니다. 또한, 최근 강화된 개인정보 보호법에 따라 중요 서류나 개인 물품은 고객이 직접 포장하고 관리하는 것을 권장합니다.</p>
+        
+        <h3>신뢰할 수 있는 이사 정보 출처 (외부 사이트 참조)</h3>
+        <p>정확하고 공신력 있는 정보를 통해 이사 관련 법규 및 피해 예방 요령을 확인하실 수 있습니다.</p>
+        <div class="external-links">
+            <a href="https://www.law.go.kr/법령/이사화물운송주선사업법" target="_blank" rel="noopener noreferrer">법제처: 이사화물 운송주선사업법</a>
+            <a href="https://www.kca.go.kr/smartconsumer/index.do" target="_blank" rel="noopener noreferrer">한국소비자원: 이사 관련 피해 예방</a>
+            <a href="https://namu.wiki/w/포장이사" target="_blank" rel="noopener noreferrer">나무위키: 포장이사 정보</a>
+            <a href="https://www.molit.go.kr/" target="_blank" rel="noopener noreferrer">국토교통부: 이사 관련 정책 자료</a>
+            <a href="https://www.busan.go.kr/index" target="_blank" rel="noopener noreferrer">부산광역시청: 행정 정보</a>
+        </div>
+    </section>
+
+    <section id="faq">
+        <h2>❓ 자주 묻는 질문 (FAQ)</h2>
+        <h3>Q. 이사 견적은 언제 받는 것이 가장 좋나요?</h3>
+        <p>A. 일반적인 경우 이사 예정일로부터 **최소 한 달 전**에 견적을 받는 것이 좋으며, 주말이나 '손 없는 날' 등 성수기에는 2~3개월 전에 상담하는 것이 합리적인 해운대 이사 비용으로 예약할 수 있는 방법입니다.</p>
+        <h3>Q. 보관이사 기간 중 짐의 안전은 어떻게 보장되나요?</h3>
+        <p>A. 저희는 전문 이사화물 배상책임보험에 가입되어 있으며, 보관 창고는 CCTV, 온도/습도 조절 시스템을 갖추고 있어 물품 훼손 및 도난의 위험으로부터 안전합니다. 보관 기간 중 발생하는 모든 문제에 대해 계약서에 명시된 책임 규정에 따라 보상해드립니다.</p>
+        <h3>Q. 해운대 초고층 아파트 이사 시 추가 비용이 발생하나요?</h3>
+        <p>A. 네, 일반적인 저층 이사와 달리 **해운대 아이파크, 두산위브더제니스** 같은 초고층 아파트는 고가 사다리차 이용료, 엘리베이터 사용료, 작업 시간 증가 등의 요인으로 인해 추가 비용이 발생할 수 있습니다. 이는 견적 시 상세히 안내해 드립니다.</p>
+    </section>
+
+    <section id="estimate-form">
+        <h2>📝 무료 견적 상담 신청 (체류 시간 증대를 위한 상세 입력 폼)</h2>
+        <p>아래 상세 정보를 입력해주시면, 해운대 지역 전문 이사 팀장이 직접 고객님께 연락드려 정확하고 합리적인 이사 견적을 무료로 제공해드립니다. **모든 정보는 안전하게 보호됩니다.**</p>
+
+        <div class="contact-form">
+            <form action="#" method="POST">
+                
+                <label for="name">성함 *</label>
+                <input type="text" id="name" name="name" required placeholder="예: 홍길동">
+                
+                <label for="phone">연락처 *</label>
+                <input type="tel" id="phone" name="phone" required placeholder="예: 010-1234-5678">
+
+                <label for="email">이메일 (선택)</label>
+                <input type="email" id="email" name="email" placeholder="견적서 수신용 이메일 주소">
+
+                <label for="move_type">희망 이사 종류 *</label>
+                <select id="move_type" name="move_type" required>
+                    <option value="">-- 이사 종류를 선택하세요 --</option>
+                    <option value="포장이사">프리미엄 포장이사</option>
+                    <option value="보관이사">보관이사</option>
+                    <option value="원룸이사">원룸/용달이사</option>
+                    <option value="사무실이사">사무실/기업이사</option>
+                    <option value="기타">기타</option>
+                </select>
+
+                <label for="move_date">희망 이사 날짜 (2026년 기준) *</label>
+                <input type="date" id="move_date" name="move_date" required min="2026-01-01" max="2026-12-31">
+
+                <label for="departure_addr">출발지 주소 (동/호수 포함)</label>
+                <input type="text" id="departure_addr" name="departure_addr" placeholder="예: 해운대구 마린시티 1로 102동 1501호">
+                
+                <label for="departure_floor">출발지 층수 / 엘리베이터 유무</label>
+                <input type="text" id="departure_floor" name="departure_floor" placeholder="예: 10층 (엘리베이터 사용 가능)">
+                
+                <label for="arrival_addr">도착지 주소 (동/호수 포함)</label>
+                <input type="text" id="arrival_addr" name="arrival_addr" placeholder="예: 기장군 정관읍 달산리 1234-5">
+                
+                <label for="arrival_floor">도착지 층수 / 엘리베이터 유무</label>
+                <input type="text" id="arrival_floor" name="arrival_floor" placeholder="예: 5층 (사다리차 이용 필요)">
+
+                <label for="load_volume">대략적인 짐의 양 (선택)</label>
+                <select id="load_volume" name="load_volume">
+                    <option value="1톤">1톤 (원룸/소형)</option>
+                    <option value="3톤">3톤 (투룸/소형 아파트)</option>
+                    <option value="5톤">5톤 (일반 아파트 24평~30평대)</option>
+                    <option value="7톤이상">7톤 이상 (대형 평수)</option>
+                </select>
+
+                <label for="special_items">특수 물품 (에어컨, 벽걸이 TV, 피아노, 돌침대 등) *</label>
+                <textarea id="special_items" name="special_items" rows="4" required placeholder="예: 시스템 에어컨 2대, 85인치 벽걸이 TV"></textarea>
+
+                <label for="memo">기타 요청 사항</label>
+                <textarea id="memo" name="memo" rows="3" placeholder="예: 오전 9시 전 작업 시작 희망, 귀금속 별도 보관 요청"></textarea>
+                
+                <button type="submit">무료 견적 신청 완료</button>
+            </form>
+        </div>
+    </section>
+
+    <section id="location">
+        <h2>위치 및 서비스 지역 안내</h2>
+        <p>본사는 해운대구에 위치하고 있으며, 부산 전 지역 및 경남 일부 지역까지 서비스를 제공합니다.</p>
+        <p>주소: 부산광역시 해운대구 우동 (전 지역 서비스 가능)</p>
+        <iframe src="https://maps.google.com/maps?q=대전%20유성구%20복용로%20123&t=&z=13&ie=UTF8&iwloc=&output=embed" title="해운대이삿짐센터 위치"></iframe>
+    </section>
+
+    <footer>
+        <p>Copyright © 2026 해운대이삿짐센터. All rights reserved. | 부산 해운대 포장이사 전문</p>
+        <p>대표 전화: <strong>010-1234-5678</strong> | 이메일: help@example.com</p>
+    </footer>
+</body>
 </html>
